@@ -55,7 +55,13 @@ export const translations = {
         { title: 'Data-First', desc: 'Every decision we make is backed by rigorous data analysis and testing.' }
       ],
       story: 'Our Story',
-      storyText: 'Founded by marketing veterans, GlobalTipss was born from a simple realization: many agencies focus on vanity metrics like clicks and impressions. We focused on what actually matters—profit and scalability.'
+      storyText: 'Founded by marketing veterans, GlobalTipss was born from a simple realization: many agencies focus on vanity metrics like clicks and impressions. We focused on what actually matters—profit and scalability.',
+      team: 'Our Team',
+      teamMembers: [
+        { name: 'Jesus Montero', role: 'Co-Founder', photo: '/fotochucho.jpeg' },
+        { name: 'Milher Bohorquez', role: 'Digital Strategy', photo: '/fotomilher.jpeg' },
+        { name: 'Camila Ballesteros', role: 'Content Leader', photo: '/fotocamila.jpeg' }
+      ]
     },
     contact: {
       title: 'Get in Touch',
@@ -78,6 +84,17 @@ export const translations = {
       legalInfo: 'Legal Information',
       data: 'Data Processing Agreement',
       rights: 'All rights reserved.',
+      corporate: 'Corporate Info',
+      company: 'Company',
+      address: 'Address',
+      contactEmail: 'Email',
+    },
+    quickContact: {
+      title: 'Quick Contact',
+      name: 'Name',
+      phone: 'Phone',
+      email: 'Email',
+      submit: 'Send',
     }
   },
   es: {
@@ -133,7 +150,13 @@ export const translations = {
         { title: 'Datos Primero', desc: 'Cada decisión está respaldada por un riguroso análisis de datos y pruebas.' }
       ],
       story: 'Nuestra Historia',
-      storyText: 'Fundada por veteranos del marketing, GlobalTipss nació de una idea simple: muchas agencias se enfocan en métricas de vanidad. Nosotros nos enfocamos en lo que realmente importa: el beneficio y la escalabilidad.'
+      storyText: 'Fundada por veteranos del marketing, GlobalTipss nació de una idea simple: muchas agencias se enfocan en métricas de vanidad. Nosotros nos enfocamos en lo que realmente importa: el beneficio y la escalabilidad.',
+      team: 'Nuestro Equipo',
+      teamMembers: [
+        { name: 'Jesus Montero', role: 'Co-Fundador', photo: '/fotochucho.jpeg' },
+        { name: 'Milher Bohorquez', role: 'Estrategia Digital', photo: '/fotomilher.jpeg' },
+        { name: 'Camila Ballesteros', role: 'Líder de Contenido', photo: '/fotocamila.jpeg' }
+      ]
     },
     contact: {
       title: 'Contáctanos',
@@ -156,6 +179,17 @@ export const translations = {
       legalInfo: 'Información legal',
       data: 'Política de Datos',
       rights: 'Todos los derechos reservados.',
+      corporate: 'Info Corporativa',
+      company: 'Empresa',
+      address: 'Dirección',
+      contactEmail: 'Correo',
+    },
+    quickContact: {
+      title: 'Contacto Rápido',
+      name: 'Nombre',
+      phone: 'Celular',
+      email: 'Correo',
+      submit: 'Enviar',
     }
   }
 };

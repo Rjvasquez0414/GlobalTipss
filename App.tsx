@@ -46,6 +46,23 @@ const AboutPage: React.FC<{ lang: Language }> = ({ lang }) => {
           </div>
         </div>
 
+        <div className="mb-24">
+          <h2 className="text-3xl font-black text-slate-900 text-center mb-12">{t.aboutPage.team}</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {t.aboutPage.teamMembers.map((member, idx) => (
+              <div key={idx} className="text-center">
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-48 h-48 rounded-full mx-auto mb-6 object-cover shadow-xl border-4 border-white"
+                />
+                <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
+                <p className="text-indigo-600 font-medium">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {t.aboutPage.valuesList.map((value, idx) => (
             <div key={idx} className="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl transition-all">
@@ -175,7 +192,20 @@ const ContactPage: React.FC<{ lang: Language }> = ({ lang }) => {
           </div>
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-12 bg-white rounded-[2rem] shadow-xl overflow-hidden border border-slate-100">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.5!2d-82.6365!3d27.8465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e1f2b4e5c1a5%3A0x1234567890abcdef!2s7901%204th%20St%20N%20Suite%20300%2C%20St.%20Petersburg%2C%20FL%2033702!5e0!3m2!1sen!2sus!4v1699999999999"
+            width="100%"
+            height="300"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title={lang === 'es' ? 'Ubicación de GlobalTipss' : 'GlobalTipss Location'}
+          />
+        </div>
+
+        <div className="mt-8 text-center">
           <button onClick={() => window.location.href = window.location.origin} className="text-slate-400 font-medium hover:text-indigo-600 transition-colors">
             ← {lang === 'es' ? 'Volver al inicio' : 'Back to home'}
           </button>
@@ -325,8 +355,8 @@ const Footer: React.FC<{ lang: Language }> = ({ lang }) => {
   return (
     <footer className="bg-slate-900 text-slate-400 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1 space-y-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="space-y-6">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white font-bold text-lg italic">G</div>
               <span className="text-xl font-black tracking-tighter text-white">GLOBAL<span className="text-indigo-400">TIPSS</span></span>
@@ -337,6 +367,7 @@ const Footer: React.FC<{ lang: Language }> = ({ lang }) => {
             <h4 className="text-white font-bold mb-6">{t.footer.links}</h4>
             <ul className="space-y-4 text-sm">
               <li><a href="?page=about" className="hover:text-white transition-colors">{t.nav.about}</a></li>
+              <li><a href="?page=contact" className="hover:text-white transition-colors">{t.nav.contact}</a></li>
             </ul>
           </div>
           <div>
@@ -345,6 +376,15 @@ const Footer: React.FC<{ lang: Language }> = ({ lang }) => {
               <li><a href="#" className="hover:text-white transition-colors">{t.footer.terms}</a></li>
               <li><a href="?page=privacy" className="hover:text-white transition-colors">{t.footer.privacy}</a></li>
               <li><a href="#" className="hover:text-white transition-colors">{t.footer.legalInfo}</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6">{t.footer.corporate}</h4>
+            <ul className="space-y-4 text-sm">
+              <li><span className="text-slate-500">{t.footer.company}:</span> Capital Quick LLC</li>
+              <li><span className="text-slate-500">EIN:</span> 30-1418776</li>
+              <li><span className="text-slate-500">{t.footer.address}:</span> 7901 4th St N, Ste 300, St. Petersburg, FL 33702</li>
+              <li><span className="text-slate-500">{t.footer.contactEmail}:</span> <a href="mailto:hsalvador@globaltipss.com" className="hover:text-white transition-colors">hsalvador@globaltipss.com</a></li>
             </ul>
           </div>
         </div>
@@ -357,7 +397,7 @@ const Footer: React.FC<{ lang: Language }> = ({ lang }) => {
 };
 
 const App: React.FC = () => {
-  const [lang, setLang] = useState<Language>('es');
+  const [lang, setLang] = useState<Language>('en');
   const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'contact' | 'about'>('home');
 
   useEffect(() => {
@@ -393,9 +433,18 @@ const App: React.FC = () => {
             <div className="bg-indigo-600 p-12 rounded-[3rem] text-white space-y-8">
               <h3 className="text-3xl font-bold">{lang === 'es' ? '¿Listo para el siguiente nivel?' : 'Ready for the next level?'}</h3>
               <p className="text-indigo-100 text-lg">{lang === 'es' ? 'Nuestro equipo está listo para auditar tus cuentas y encontrar oportunidades de mejora inmediata.' : 'Our team is ready to audit your accounts and find immediate improvement opportunities.'}</p>
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); window.location.href = "?page=contact" }}>
-                <input type="email" placeholder={lang === 'es' ? 'Tu correo corporativo' : 'Your corporate email'} className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                <button className="w-full bg-white text-indigo-600 font-bold py-4 rounded-xl hover:bg-slate-100 transition-colors uppercase tracking-widest text-sm">{lang === 'es' ? 'Solicitar Auditoría Gratis' : 'Request Free Audit'}</button>
+              <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target as HTMLFormElement;
+                const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+                const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
+                const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+                window.location.href = `mailto:hsalvador@globaltipss.com?subject=Quick Contact from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}`;
+              }}>
+                <input type="text" name="name" required placeholder={lang === 'es' ? 'Nombre' : 'Name'} className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                <input type="tel" name="phone" required placeholder={lang === 'es' ? 'Celular' : 'Phone'} className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                <input type="email" name="email" required placeholder={lang === 'es' ? 'Correo' : 'Email'} className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                <button type="submit" className="w-full bg-white text-indigo-600 font-bold py-4 rounded-xl hover:bg-slate-100 transition-colors uppercase tracking-widest text-sm">{lang === 'es' ? 'Enviar' : 'Send'}</button>
               </form>
             </div>
           </div>
